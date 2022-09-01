@@ -14,7 +14,7 @@ function register(e) {
   if (!id.value) return alert("아이디를 입력해주세요.");
   if (!password.value) return alert("비밀번호를 입력해주세요.");
   if (!confirmPassword.value) return alert("비밀번호 확인을 입력해주세요.");
-  if (password !== confirmPassword)
+  if (password.value !== confirmPassword.value)
     return alert("비밀번호가 일치하지 않습니다.");
 
   const req = {

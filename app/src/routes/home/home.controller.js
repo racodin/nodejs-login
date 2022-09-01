@@ -38,9 +38,9 @@ const process = {
     // response.msg = "로그인에 실패하였슶니다.";
     // return res.json(response);
   },
-  register: (req, res) => {
+  register: async (req, res) => {
     const user = new User(req.body);
-    const response = user.register();
+    const response = await user.register();
     return res.json(response);
   },
 };
