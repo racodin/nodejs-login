@@ -1,3 +1,5 @@
+"use strict";
+
 const index = (req, res) => {
   res.render("home/index");
 };
