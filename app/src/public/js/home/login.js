@@ -6,7 +6,9 @@ const loginButton = document.querySelector("#login-button");
 
 loginButton.addEventListener("click", login);
 
-function login() {
+function login(e) {
+  e.preventDefault();
+
   const req = {
     id: id.value,
     password: password.value,
