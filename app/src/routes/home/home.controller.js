@@ -9,14 +9,16 @@ const output = {
   login: (req, res) => {
     res.render("home/login");
   },
+  register: (req, res) => {
+    res.render("home/register");
+  },
 };
 
 const process = {
   login: (req, res) => {
     const user = new User(req.body);
     const response = user.login();
-    console.log(response);
-    // return res.json(response);
+    return res.json(response);
 
     // const id = req.body.id;
     // const password = req.body.password;
