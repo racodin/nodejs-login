@@ -7,10 +7,10 @@ class UserStorage {
 
   static getUserInfo(id) {
     return new Promise((resolve, reject) => {
-      const query = "SELECT * FROM users WHERE id = ?;";
+      const query = "SELECT * FROM usedrs WHERE id = ?;";
       db.query(query, [id], (err, data) => {
         if (err) reject(`${err}`);
-        resolve(data[0]);
+        else resolve(data[0]);
       });
     });
   }
@@ -23,7 +23,7 @@ class UserStorage {
         [userInfo.id, userInfo.name, userInfo.password],
         (err) => {
           if (err) reject(`${err}`);
-          resolve({ success: true });
+          else resolve({ success: true });
         }
       );
     });
