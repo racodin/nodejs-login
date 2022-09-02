@@ -7,6 +7,7 @@ const output = {
   home: (req, res) => {
     logger.info(`GET / 304 "홈 화면으로 이동"`);
     res.render("home/index");
+    // res.sendFile(__dirname + "/src/public/index.html");
   },
 
   login: (req, res) => {
@@ -23,13 +24,13 @@ const output = {
 const log = (response, url) => {
   if (response.err) {
     logger.error(
-      `${url.method} ${url.path} ${url.status} Response: ${response.success} ${response.err}`
+      `${url.method} ${url.path} ${url.status} Response: { success: ${response.success}, ${response.err} }`
     );
   } else {
     logger.info(
-      `${url.method} ${url.path} ${url.status} Response: ${response.success} ${
-        response.msg || ""
-      }`
+      `${url.method} ${url.path} ${url.status} Response: { success: ${
+        response.success
+      }${response.msg ? ", msg: " + response.msg : ""} }`
     );
   }
 };
@@ -41,7 +42,7 @@ const process = {
     const url = {
       method: "POST",
       path: "/login",
-      status: response.err ? 400 : 200,
+      status: response.err ? 400 : 201,
     };
     log(response, url);
     return res.status(url.status).json(response);
@@ -53,7 +54,7 @@ const process = {
     const url = {
       method: "POST",
       path: "/register",
-      status: response.err ? 400 : 200,
+      status: response.err ? 400 : 201,
     };
     log(response, url);
     return res.status(url.status).json(response);
